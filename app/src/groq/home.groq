@@ -1,1 +1,14 @@
-*[_type == 'product']
+*[_type == 'product']{
+  title,
+  description,
+  price,
+  image-> {
+    alt,
+    image{
+      asset->{
+       url
+      }
+    }
+  },
+  size
+}

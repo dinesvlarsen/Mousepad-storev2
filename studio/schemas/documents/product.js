@@ -38,6 +38,19 @@ export default {
 			title: 'Quantity',
 			name: 'quantity',
 			type: 'number',
+		},
+		{
+			title: 'Size',
+			name: 'size',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Small', value: 'S' },
+					{ title: 'Medium', value: 'M' },
+					{ title: 'Large', value: 'L' }
+				]
+			}
+
 		}
 	]
 }
