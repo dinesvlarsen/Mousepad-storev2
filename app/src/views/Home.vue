@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<div v-if="loading">...</div>
-		<!-- <pre v-else>result: {{ JSON.stringify(result, null, 3) }}</pre> -->
+		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
 
-		<div class="products" v-for="product in result" :key="product._id">
+		<div class="products" v-for="product in data" :key="product._id">
 			<router-link :to="product.slug.current">
 				<div>{{ product.slug.current }}</div>
 				<img :src="product.image.image.asset.url" :alt="product.image.asset" />
@@ -14,6 +14,7 @@
 					<b>${{ product.price }}</b>
 				</p>
 			</router-link>
+			<button @click="addToCart(product)">Add to cart</button>
 		</div>
 	</div>
 </template>
@@ -26,15 +27,24 @@ export default {
 	mixins: [viewMixin],
 
 	async created() {
-		console.log(this.$route.params);
 		await this.sanityFetch(query, { type: 'product' });
-
-		this.$store.state.data = await this.sanityFetch(query, { type: 'product' });
-		console.log(this.$store.state.data);
+		this.$store.dispatch('storeData', this.result);
 
 		this.metaTags({
 			title: 'Crazy Mats',
 		});
+	},
+
+	methods: {
+		addToCart(product) {
+			this.$store.dispatch('addToCart', product);
+		},
+	},
+
+	computed: {
+		data() {
+			return this.$store.state.data;
+		},
 	},
 };
 </script>
