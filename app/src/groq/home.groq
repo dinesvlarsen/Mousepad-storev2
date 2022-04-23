@@ -1,4 +1,5 @@
 *[_type == 'product']{
+  slug,
   title,
   description,
   price,
