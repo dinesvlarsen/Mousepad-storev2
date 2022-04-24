@@ -1,4 +1,5 @@
 *[_type == 'product']{
+  slug,
   title,
   description,
   price,
@@ -10,5 +11,6 @@
       }
     }
   },
-  size
+  size,
+  _id
 }
