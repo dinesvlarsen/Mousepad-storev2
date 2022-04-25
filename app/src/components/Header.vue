@@ -6,11 +6,7 @@
 		<li>
 			<router-link to="/cart">
 				<div class="cart">
-					<img
-						class="cart__icon"
-						src="../../public/images/Cart-icon.svg"
-						alt=""
-					/>
+					<img class="cart__icon" src="/images/Cart-icon.svg" alt="" />
 					<div class="cart__count-container">
 						<div class="cart__count">{{ totalInCart }}</div>
 					</div>
