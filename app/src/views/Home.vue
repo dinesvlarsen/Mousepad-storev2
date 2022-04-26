@@ -4,18 +4,22 @@
 		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
 
 		<!-- We loop over all the products in the data we get from store, which is set by sanity -->
-		<div class="products" v-for="product in data" :key="product._id">
+		<div class="product" v-for="product in data" :key="product._id">
 			<router-link :to="product.slug.current">
-				<img :src="product.image.image.asset.url" :alt="product.image.asset" />
+				<img
+					class="product__image"
+					:src="product.image.image.asset.url"
+					:alt="product.image.asset"
+				/>
 
-				<h2>{{ product.title }}</h2>
-				<p>{{ product.description }}</p>
-				<p>
-					<b>${{ product.price }}</b>
-				</p>
+				<h2 class="product__title">{{ product.title }}</h2>
+				<p class="product__description">{{ product.description }}</p>
+				<p class="product__price">${{ product.price }}</p>
 			</router-link>
 			<!-- Product used as a parameter for the addToCart function here, comes from the v-for loop. -->
-			<button @click="addToCart(product)">Add to cart</button>
+			<button class="product__add-to-cart" @click="addToCart(product)">
+				Add To Cart
+			</button>
 		</div>
 	</div>
 </template>
@@ -51,9 +55,45 @@ export default {
 </script>
 
 <style>
-.products img {
-	width: 388px;
-	height: 388px;
-	border-radius: 2px;
+.product:first-child {
+	margin-top: 48px;
+}
+
+.product {
+	margin-bottom: 96px;
+}
+/* For some reason I couldnt wrap these in their own container, probably because of the router link then ending up separated. */
+.product__title,
+.product__description,
+.product__price,
+.product__add-to-cart {
+	margin: 0 32px;
+}
+
+.product__image {
+	background: #eeeeee;
+}
+
+.product__title {
+	margin-top: 24px;
+	font-size: 30px;
+}
+
+.product__description {
+	margin-top: 12px;
+}
+
+.product__price {
+	margin-top: 12px;
+	font-weight: bold;
+}
+
+/* Going to make this button into component or use slots, since with slots we can just keep reusing the style, even for the remove from cart button */
+.product__add-to-cart {
+	background-color: #191b1d;
+	color: white;
+	padding: 11px 43px;
+	border-radius: 5px;
+	margin-top: 16px;
 }
 </style>

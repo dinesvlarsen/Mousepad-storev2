@@ -31,7 +31,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 24px 32px 48px;
+	padding: 24px 32px 0px;
 }
 
 .navigation__logo {
