@@ -2,7 +2,7 @@
 	<div>
 		<div v-if="loading">...</div>
 		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
-
+		<div>{{ totalInCart }}</div>
 		<!-- We loop over all the products in the data we get from store, which is set by sanity -->
 		<div class="product" v-for="product in data" :key="product._id">
 			<router-link :to="product.slug.current">
@@ -32,6 +32,7 @@ export default {
 	mixins: [viewMixin],
 
 	async created() {
+		this.addLocalStorageDataToStore();
 		await this.sanityFetch(query, { type: 'product' });
 		this.$store.dispatch('storeData', this.result);
 
@@ -44,11 +45,23 @@ export default {
 		addToCart(product) {
 			this.$store.dispatch('addToCart', product);
 		},
+
+		calculateTotalFromLocal() {
+			const initialValue = 0;
+			const total = this.$store.state.cart.reduce(
+				(previousValue, currentValue) => previousValue + currentValue.count,
+				initialValue
+			);
+			return total;
+		},
 	},
 
 	computed: {
 		data() {
 			return this.$store.state.data;
+		},
+		totalInCart() {
+			return this.$store.getters.totalInCart;
 		},
 	},
 };

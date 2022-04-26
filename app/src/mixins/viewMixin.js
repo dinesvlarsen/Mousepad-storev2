@@ -32,6 +32,22 @@ export default {
 
 			document.querySelector('link[rel="canonical"]').setAttribute('href', currentURL);
 			document.querySelector('meta[property="og:url"]').setAttribute('content', currentURL);
+		},
+		
+		addLocalStorageDataToStore(){
+			for (let i = 0; i < localStorage.length; i++) {
+				const key = localStorage.key(i);
+				const convertedProduct = JSON.parse(localStorage.getItem(key));
+				this.$store.dispatch('passLocalStorageToCart', convertedProduct);
+			}
+	
+			this.$store.dispatch('addTotalFromLocal');
+		}
+	},
+
+	computed: {
+		totalInCart(){
+			return this.$store.getter
 		}
 	}
 }

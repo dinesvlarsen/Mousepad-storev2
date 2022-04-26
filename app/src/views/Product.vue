@@ -1,6 +1,8 @@
 <template>
 	<div v-if="loading">...</div>
 	<pre v-else>result: {{ JSON.stringify(result, null, 3) }}</pre>
+	<div>Hello there</div>
+	<button @click="addToCart(this.result)">add</button>
 </template>
 
 <script>
@@ -19,6 +21,14 @@ export default {
 			description: this.result.description,
 			image: this.result.image.image.asset.url,
 		});
+
+		this.addLocalStorageDataToStore();
+	},
+
+	methods: {
+		addToCart(product) {
+			this.$store.dispatch('addToCart', product);
+		},
 	},
 };
 </script>

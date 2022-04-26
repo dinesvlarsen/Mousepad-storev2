@@ -12,11 +12,18 @@ export default {
 			state.data = data
 		},
 
+		passLocalStorageToCart(state, product) {
+			state.cart.push(product)
+		},
+
 		addToCart(state, product) {
 			// Checks if an item already exists in the store cart by looking through all the items in the cart array, and checking them against the current product id.
 			if (state.cart.some(item => item.id === product._id)) {
 				const alreadyInCart = state.cart.find(itemInCart => itemInCart.id === product._id);
 				alreadyInCart.count++
+				localStorage.setItem(product.title, JSON.stringify(alreadyInCart));
+
+
 			} else {
 
 				const cartProduct = {
@@ -28,9 +35,13 @@ export default {
 					count: 1
 				}
 				state.cart.push(cartProduct)
+				localStorage.setItem(product.title, JSON.stringify(cartProduct));
 			}
+			const items = localStorage.getItem('cart')
+			console.log(JSON.parse(items))
 
 			state.totalInCart++
+			// localStorage.setItem('totalInCart', totalInCart)
 		},
 
 		removeFromCart(state, product) {
@@ -44,10 +55,20 @@ export default {
 				productToRemove.count--
 				state.totalInCart--
 			}
+		},
+
+		addTotalFromLocal(state, _) {
+			const initialValue = 0;
+			const total = state.cart.reduce((previousValue, currentValue) => previousValue + currentValue.count, initialValue)
+			state.totalInCart = total
 		}
 	},
 
 	actions: {
+		passLocalStorageToCart(passToCart, product) {
+			passToCart.commit('passLocalStorageToCart', product)
+
+		},
 		storeData(storeData, data) {
 			storeData.commit('storeData', data)
 		},
@@ -58,6 +79,11 @@ export default {
 
 		removeFromCart(removeFromCart, product) {
 			removeFromCart.commit('removeFromCart', product)
+		},
+
+		addTotalFromLocal(addTotalFromLocal, _) {
+			console.log('hello')
+			addTotalFromLocal.commit('addTotalFromLocal')
 		}
 	},
 
@@ -71,7 +97,9 @@ export default {
 		},
 
 		totalInCart(state) {
+
 			return state.totalInCart
+
 		}
 	},
 

@@ -21,7 +21,7 @@
 
 				<p class="cart-product__price">${{ product.price }}</p>
 				<button class="cart-product__button" @click="removeItem(product)">
-					Remove
+					Remove testing this
 				</button>
 			</div>
 		</div>
@@ -30,6 +30,10 @@
 
 <script>
 export default {
+	created() {
+		// this.addLocalStorageDataToStore();
+	},
+
 	computed: {
 		items() {
 			return this.$store.getters.cartItems;
