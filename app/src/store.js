@@ -21,6 +21,7 @@ export default {
 
 				const cartProduct = {
 					title: product.title,
+					description: product.description,
 					price: product.price,
 					image: product.image.image.asset.url,
 					id: product._id,

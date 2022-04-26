@@ -71,7 +71,7 @@ export default {
 }
 
 .product__image {
-	background: #eeeeee;
+	background: var(--product-background);
 }
 
 .product__title {
