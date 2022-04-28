@@ -43,6 +43,7 @@ export default {
 	methods: {
 		addToCart(product) {
 			this.$store.dispatch('addToCart', product);
+			this.$store.dispatch('calculateTotalSum', { product, operator: '+' });
 		},
 	},
 

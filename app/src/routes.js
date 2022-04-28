@@ -1,6 +1,6 @@
 import Home from './views/Home.vue';
 import ProductPage from './views/Product.vue';
-import CartOverview from './views/CartOverview.vue';
+import Cart from './views/Cart.vue';
 
 export default [
 	{
@@ -14,8 +14,8 @@ export default [
 		component: Home
 	},
 	{
-		name: 'cartOverview',
+		name: 'cart',
 		path: '/cart',
-		component: CartOverview
+		component: Cart
 	}
 ];
