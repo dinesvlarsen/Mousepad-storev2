@@ -21,8 +21,6 @@ export default {
 			description: this.result.description,
 			image: this.result.image.image.asset.url,
 		});
-
-		this.addLocalStorageDataToStore();
 	},
 
 	methods: {

@@ -32,7 +32,7 @@ export default {
 	mixins: [viewMixin],
 
 	async created() {
-		this.addLocalStorageDataToStore();
+		
 		await this.sanityFetch(query, { type: 'product' });
 		this.$store.dispatch('storeData', this.result);
 
