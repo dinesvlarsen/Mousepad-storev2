@@ -12,7 +12,7 @@
 			<p>{{ result.description }}</p>
 			<button
 				class="product-information__add-to-cart"
-				@click="addToCart(product)"
+				@click="addToCart(result)"
 			>
 				Add To Cart
 			</button>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import query from '../groq/projectPage.groq?raw';
+import query from '../groq/product.groq?raw';
 import viewMixin from '../mixins/viewMixin.js';
 
 export default {
@@ -42,6 +42,7 @@ export default {
 	methods: {
 		addToCart(product) {
 			this.$store.dispatch('addToCart', product);
+			this.$store.dispatch('calculateTotalSum', { product, operator: '+' });
 		},
 	},
 
