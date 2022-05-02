@@ -1,7 +1,7 @@
 export default {
 	state() {
 		return {
-			data: [],
+			sanityData: [],
 			cart: [],
 			totalInCart: 0,
 			totalSum: 0,
@@ -9,16 +9,17 @@ export default {
 	},
 
 	mutations: {
-		storeData(state, data) {
-			state.data = data
+		storeData(state, sanityData) {
+			state.sanityData = sanityData
 		},
 
 		addToCart(state, product) {
-
 			// Checks if an item already exists in the store cart by looking through all the items in the cart array, and checking them against the current product id.
 			if (state.cart.some(item => item.id === product._id)) {
 				const alreadyInCart = state.cart.find(itemInCart => itemInCart.id === product._id);
 				alreadyInCart.count++
+				// localStorage.setItem(alreadyInCart.title, alreadyInCart)
+
 			} else {
 				const cartProduct = {
 					title: product.title,
@@ -26,11 +27,14 @@ export default {
 					price: product.price,
 					image: product.image.image.asset.url,
 					id: product._id,
+					slug: product.slug.current,
 					count: 1
 				}
-				state.cart.push(cartProduct)
-			}
 
+				state.cart.push(cartProduct)
+				// localStorage.setItem(cartProduct.title, cartProduct)
+
+			}
 			state.totalInCart++
 		},
 
@@ -48,34 +52,49 @@ export default {
 				productToRemove.count--
 				state.totalInCart--
 			}
+
+
 		},
 
 		calculateTotalSum(state, { product, operator: operator }) {
 			const price = +product.price
 			if (operator === '+') state.totalSum += price;
 			else state.totalSum -= price;
+		},
 
-		}
+		// setLocalStorage(_, { product, totalInCart, totalSum }) {
+		// 	// localStorage.setItem(product.title, product)
+		// 	localStorage.setItem("total in cart", totalInCart)
+		// 	localStorage.setItem("total sum", totalSum)
+		// }
 	},
 
 	actions: {
-		storeData(storeData, data) {
-			storeData.commit('storeData', data)
+		storeData(storeData, sanityData) {
+			storeData.commit('storeData', sanityData)
 		},
+
 		addToCart(addToCart, product) {
 			addToCart.commit('addToCart', product)
 		},
+
 		removeFromCart(removeFromCart, product) {
 			removeFromCart.commit('removeFromCart', product)
 		},
+
 		calculateTotalSum(calculateTotalSum, { product, operator }) {
 			calculateTotalSum.commit('calculateTotalSum', { product, operator })
-		}
+		},
+
+		// setLocalStorage(setLocalStorage, { product, totalInCart, totalSum }) {
+		// 	setLocalStorage.commit('setLocalStorage', { product, totalInCart, totalSum })
+		// }
+
 	},
 
 	getters: {
-		data(state) {
-			return state.data
+		sanityData(state) {
+			return state.sanityData
 		},
 		cartItems(state) {
 			return state.cart

@@ -1,8 +1,13 @@
 *[_type == 'product']{
+  _id,
   slug,
   title,
   description,
   price,
+  size-> {
+    dimensions,
+    size,
+  },
   image-> {
     alt,
     image{
@@ -11,6 +16,4 @@
       }
     }
   },
-  size,
-  _id
 }

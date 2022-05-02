@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<div class="products">
 		<div v-if="loading">...</div>
 		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
 
 		<!-- We loop over all the products in the data we get from store, which is set by sanity -->
-		<div class="product" v-for="product in data" :key="product._id">
+		<div v-else class="product" v-for="product in sanityData" :key="product._id">
 			<router-link :to="product.slug.current">
 				<img
 					class="product__image"
@@ -13,7 +13,10 @@
 				/>
 
 				<h2 class="product__title">{{ product.title }}</h2>
-				<p class="product__description">{{ product.description }}</p>
+
+				<p class="product__size">{{ product.size.size }}</p>
+				<p class="product__dimensions">({{ product.size.dimensions }})</p>
+
 				<p class="product__price">${{ product.price }}</p>
 			</router-link>
 			<!-- Product used as a parameter for the addToCart function here, comes from the v-for loop. -->
@@ -44,44 +47,63 @@ export default {
 		addToCart(product) {
 			this.$store.dispatch('addToCart', product);
 			this.$store.dispatch('calculateTotalSum', { product, operator: '+' });
+
+			const totalInCart = this.totalInCart;
+			const totalSum = this.totalSum;
+			this.$store.dispatch('setLocalStorage', {
+				product,
+				totalInCart: totalInCart,
+				totalSum: totalSum,
+			});
 		},
 	},
 
 	computed: {
-		data() {
-			return this.$store.state.data;
+		sanityData() {
+			return this.$store.state.sanityData;
+		},
+		totalInCart() {
+			return this.$store.state.totalInCart;
+		},
+		totalSum() {
+			return this.$store.state.totalSum;
 		},
 	},
 };
 </script>
 
 <style>
-.product:first-child {
-	margin-top: 48px;
-}
-
 .product {
 	margin-bottom: 96px;
 }
-/* For some reason I couldnt wrap these in their own container, probably because of the router link then ending up separated. */
-.product__title,
-.product__description,
-.product__price,
-.product__add-to-cart {
-	margin: 0 32px;
+
+.product *:not(.product__image) {
+	margin-left: 32px;
+	margin-right: 32px;
 }
 
 .product__image {
 	background: var(--product-background);
+	border: 2px solid black;
+	border-radius: 2px;
 }
 
 .product__title {
 	margin-top: 24px;
-	font-size: 30px;
+	font-size: 20px;
 }
 
-.product__description {
+.product__size {
 	margin-top: 12px;
+}
+
+.product__dimensions {
+	margin-top: 4px;
+}
+.product__size,
+.product__dimensions {
+	color: #3f3f3f;
+	font-size: 16spx;
 }
 
 .product__price {
@@ -96,5 +118,26 @@ export default {
 	padding: 11px 43px;
 	border-radius: 5px;
 	margin-top: 16px;
+}
+
+@media only screen and (min-width: 600px) {
+	.product *:not(.product__image) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.products {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+		padding: 0 32px;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.products {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 </style>

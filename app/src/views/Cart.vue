@@ -6,13 +6,15 @@
 		</div>
 
 		<div class="cart-product" v-for="product in items" :key="product._key">
-			<div class="left">
-				<img
-					class="cart-product__image"
-					:src="product.image"
-					:alt="product.alt"
-				/>
-			</div>
+			<router-link :to="product.slug">
+				<div>
+					<img
+						class="cart-product__image"
+						:src="product.image"
+						:alt="product.alt"
+					/>
+				</div>
+			</router-link>
 
 			<div class="cart-product__details">
 				<h1 class="cart-product__title">{{ product.title }}</h1>
@@ -28,7 +30,7 @@
 			<div class="bottom-menu">
 				<div class="bottom-menu__total">
 					<p>
-						<span class="bottom-menu__total--width">Total:</span>
+						<span class="bottom-menu__total--width">Total: </span>
 						<span class="bottom-menu__price">${{ totalSum }}</span>
 					</p>
 				</div>
@@ -82,10 +84,9 @@ export default {
 }
 
 .cart-product__image {
-	width: var(--cart-image-width);
+	max-width: var(--cart-image-width);
 	background: var(--product-background);
 	border-radius: 2px;
-	background: var(--product-background);
 }
 
 .cart-product__title {
@@ -125,7 +126,6 @@ export default {
 }
 
 .bottom-menu__total--width {
-	width: calc(var(--cart-image-width) + 16px);
 	display: inline-block;
 	padding-left: 32px;
 }
@@ -133,6 +133,7 @@ export default {
 .bottom-menu__price {
 	font-weight: bold;
 	text-decoration: underline;
+	margin-left: 8px;
 }
 
 .bottom-menu__checkout {

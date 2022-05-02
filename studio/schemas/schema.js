@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import figure from './documents/figure'
 import product from './documents/product'
+import size from './documents/size'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -17,5 +18,6 @@ export default createSchema({
 		/* Your types here! */
 		product,
 		figure,
+		size
 	]),
 })

@@ -42,14 +42,15 @@ export default {
 		{
 			title: 'Size',
 			name: 'size',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Small', value: 'S' },
-					{ title: 'Medium', value: 'M' },
-					{ title: 'Large', value: 'L' }
-				]
-			}
+			type: 'reference',
+			to: [{ type: 'size' }]
+			// options: {
+			// 	list: [
+			// 		{ title: 'Small', value: 'S' },
+			// 		{ title: 'Medium', value: 'M' },
+			// 		{ title: 'Large', value: 'L' }
+			// 	]
+			// }
 
 		}
 	]

@@ -1,0 +1,24 @@
+*[slug.current == $slug][0] {
+  _id,
+  title,
+  description,
+  price,
+  image->{
+    alt,
+    image{
+      asset->{
+        url
+      }
+    } 
+  },
+  slug{
+    current
+  },
+  size->{
+    dimensions,
+    thickness,
+    size
+  }
+}
+
+
