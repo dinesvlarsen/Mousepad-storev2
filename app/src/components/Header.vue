@@ -32,6 +32,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	padding: 24px 32px 0px;
+	margin-bottom: 48px;
 }
 
 .navigation__logo {
