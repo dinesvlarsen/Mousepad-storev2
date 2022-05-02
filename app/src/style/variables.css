@@ -1,5 +1,5 @@
 :root {
-	--background: white;
+	--background: rgb(243, 243, 243);
 	--foreground: black;
 
 	--font-family: 'Roboto', sans-serif;
@@ -7,5 +7,5 @@
 
 	--product-background: #eeeeee;
 
-	--cart-image-width: 168px;
+	--cart-image-width: 388px;
 }
