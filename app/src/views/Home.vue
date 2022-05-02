@@ -4,7 +4,12 @@
 		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
 
 		<!-- We loop over all the products in the data we get from store, which is set by sanity -->
-		<div v-else class="product" v-for="product in sanityData" :key="product._id">
+		<div
+			v-else
+			class="product"
+			v-for="product in sanityData"
+			:key="product._id"
+		>
 			<router-link :to="product.slug.current">
 				<img
 					class="product__image"
@@ -79,7 +84,6 @@ export default {
 
 .product *:not(.product__image) {
 	margin-left: 32px;
-	margin-right: 32px;
 }
 
 .product__image {

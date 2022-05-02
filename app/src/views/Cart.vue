@@ -63,6 +63,7 @@ export default {
 <style>
 .cart-overview {
 	margin-top: 81px;
+	/* margin: 81px auto calc(141px + 64px) auto; */
 	/* first value here is the height of the bottom-menu, second value is the spacing you want between that menu and the content above. */
 	margin-bottom: calc(141px + 64px);
 	padding: 0 32px;
@@ -70,8 +71,11 @@ export default {
 }
 
 .cart-overview__empty-message {
+	width: 100%;
 	position: fixed;
-	top: 40%;
+	left: 0;
+	top: 50%;
+	text-align: center;
 }
 
 .cart-product {
@@ -142,5 +146,17 @@ export default {
 	background: #191b1d;
 	color: white;
 	padding: 24px 0;
+}
+
+@media only screen and (min-width: 600px) {
+	.bottom-menu__checkout {
+		text-align: center;
+		width: 20%;
+		margin: 0 0 24px 32px;
+		border-radius: 2px;
+		background: #191b1d;
+		color: white;
+		padding: 24px 0;
+	}
 }
 </style>
