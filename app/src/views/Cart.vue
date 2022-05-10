@@ -2,7 +2,7 @@
 	<div class="cart-overview">
 		<div class="cart-overview__empty-message" v-if="items.length === 0">
 			Your cart is empty, head over to our
-			<RouterLink to="/">store </RouterLink> to browse!
+			<router-link to="/"><b>store</b> </router-link> to browse!
 		</div>
 
 		<div class="cart-product" v-for="product in items" :key="product._key">

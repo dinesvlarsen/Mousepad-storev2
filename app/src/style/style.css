@@ -5,10 +5,12 @@ body {
 	font-family: var(--font-family);
 }
 
-button:hover {
+button:hover,
+a:hover {
 	opacity: 0.5;
 }
 
-button:active {
+button:active,
+a:active {
 	opacity: 0.8;
 }
