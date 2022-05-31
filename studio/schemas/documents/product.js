@@ -44,14 +44,6 @@ export default {
 			name: 'size',
 			type: 'reference',
 			to: [{ type: 'size' }]
-			// options: {
-			// 	list: [
-			// 		{ title: 'Small', value: 'S' },
-			// 		{ title: 'Medium', value: 'M' },
-			// 		{ title: 'Large', value: 'L' }
-			// 	]
-			// }
-
 		}
 	]
 }
