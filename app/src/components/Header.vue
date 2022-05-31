@@ -1,19 +1,21 @@
 <template>
-	<ul class="navigation">
-		<RouterLink to="/">
-			<li class="navigation__logo">CrazyMats</li>
-		</RouterLink>
-		<li>
-			<router-link to="/cart">
-				<div class="cart">
-					<img class="cart__icon" src="/images/Cart-icon.svg" alt="" />
-					<div class="cart__count-container">
-						<div class="cart__count">{{ totalInCart }}</div>
+	<header>
+		<ul class="navigation">
+			<RouterLink to="/">
+				<li class="navigation__logo">CrazyMats</li>
+			</RouterLink>
+			<li>
+				<router-link to="/cart">
+					<div class="cart">
+						<img class="cart__icon" src="/images/Cart-icon.svg" alt="" />
+						<div class="cart__count-container">
+							<div class="cart__count">{{ totalInCart }}</div>
+						</div>
 					</div>
-				</div>
-			</router-link>
-		</li>
-	</ul>
+				</router-link>
+			</li>
+		</ul>
+	</header>
 </template>
 
 <script>

@@ -1,7 +1,6 @@
 <template>
 	<div class="products">
 		<div v-if="loading">...</div>
-		<!-- <pre v-else>result: {{ JSON.stringify(data, null, 3) }}</pre> -->
 
 		<!-- We loop over all the products in the data we get from store, which is set by sanity -->
 		<div
