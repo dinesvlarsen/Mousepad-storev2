@@ -4,6 +4,5 @@ export default sanityClient({
 	projectId: 'w9b51wro',
 	dataset: 'production',
 	apiVersion: '2022-04-19', //day the project was started
-	useCdn: false, //false for localhost, true for netlify
-	// withCredentials: true
+	useCdn: true, //false for localhost, true for netlify
 });
