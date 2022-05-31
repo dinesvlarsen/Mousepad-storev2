@@ -2,7 +2,7 @@
 	<header>
 		<ul class="navigation">
 			<RouterLink to="/">
-				<li class="navigation__logo">CrazyMats TEST</li>
+				<li class="navigation__logo">CrazyMats TEST-useCdn false</li>
 			</RouterLink>
 			<li>
 				<router-link to="/cart">
