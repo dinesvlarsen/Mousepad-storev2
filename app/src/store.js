@@ -18,7 +18,7 @@ export default {
 			if (state.cart.some(item => item.id === product._id)) {
 				const alreadyInCart = state.cart.find(itemInCart => itemInCart.id === product._id);
 				alreadyInCart.count++
-				// localStorage.setItem(alreadyInCart.title, alreadyInCart)
+				
 
 			} else {
 				const cartProduct = {
@@ -30,10 +30,7 @@ export default {
 					slug: product.slug.current,
 					count: 1
 				}
-
 				state.cart.push(cartProduct)
-				// localStorage.setItem(cartProduct.title, cartProduct)
-
 			}
 			state.totalInCart++
 		},
@@ -61,12 +58,6 @@ export default {
 			if (operator === '+') state.totalSum += price;
 			else state.totalSum -= price;
 		},
-
-		// setLocalStorage(_, { product, totalInCart, totalSum }) {
-		// 	// localStorage.setItem(product.title, product)
-		// 	localStorage.setItem("total in cart", totalInCart)
-		// 	localStorage.setItem("total sum", totalSum)
-		// }
 	},
 
 	actions: {
@@ -85,11 +76,6 @@ export default {
 		calculateTotalSum(calculateTotalSum, { product, operator }) {
 			calculateTotalSum.commit('calculateTotalSum', { product, operator })
 		},
-
-		// setLocalStorage(setLocalStorage, { product, totalInCart, totalSum }) {
-		// 	setLocalStorage.commit('setLocalStorage', { product, totalInCart, totalSum })
-		// }
-
 	},
 
 	getters: {
@@ -106,6 +92,4 @@ export default {
 			return state.totalSum
 		}
 	},
-
-
 };

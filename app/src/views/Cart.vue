@@ -18,7 +18,6 @@
 
 			<div class="cart-product__details">
 				<h1 class="cart-product__title">{{ product.title }}</h1>
-				<!-- <p class="cart-product__description">{{ product.description }}</p> -->
 
 				<p class="cart-product__quantity">Quantity: {{ product.count }}</p>
 
