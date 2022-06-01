@@ -1,7 +1,5 @@
 # CrazyMats
->
->Simple store frontend where you can add items through the Sanity CMS. You can add and remove items from the cart, and it will calculate the total sum of all the items in the cart. There is also dynamic links to each product.
->
+Simple store frontend where you can add items through the Sanity CMS. You can add and remove items from the cart, and it will calculate the total sum of all the items in the cart. There is also dynamic links to each product.
 
 **Made with:**
 > 
