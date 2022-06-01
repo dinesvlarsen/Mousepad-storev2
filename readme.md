@@ -3,8 +3,8 @@ Simple store frontend where you can add items through the Sanity CMS. You can ad
 
 
 ## How to run on your local machine
-- Navigate to **BlogThing/app** and run **npm install**
-- To start localhost navigate to **BlogThing/app** and run **npm run dev**
+- Navigate to **crazymats/app** and run **npm install**
+- To start localhost navigate to **crazymats/app** and run **npm run dev**
 
 **Made with:**
 > 
