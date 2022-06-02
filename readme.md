@@ -8,5 +8,5 @@ Simple store frontend where you can add items through the Sanity CMS. You can ad
 
 **Made with:**
 > 
-> [Vue.js](https://vuejs.org/), [Vue Router](https://router.vuejs.org/),[Vuex](https://vuex.vuejs.org/) [Sanity Studio](https://www.sanity.io/)
+> [Vue.js](https://vuejs.org/), [Vue Router](https://router.vuejs.org/),[Vuex](https://vuex.vuejs.org/), [Sanity Studio](https://www.sanity.io/)
 >
