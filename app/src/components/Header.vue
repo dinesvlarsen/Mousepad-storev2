@@ -56,8 +56,8 @@ export default {
 .cart__count-container {
 	position: absolute;
 	z-index: 0;
-	top: 15;
-	left: 4;
+	top: 15px;
+	left: 4px;
 	width: 31px;
 	height: 24px;
 }
