@@ -51,14 +51,6 @@ export default {
 		addToCart(product) {
 			this.$store.dispatch('addToCart', product);
 			this.$store.dispatch('calculateTotalSum', { product, operator: '+' });
-
-			const totalInCart = this.totalInCart;
-			const totalSum = this.totalSum;
-			this.$store.dispatch('setLocalStorage', {
-				product,
-				totalInCart: totalInCart,
-				totalSum: totalSum,
-			});
 		},
 	},
 
